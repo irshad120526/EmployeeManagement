@@ -1,0 +1,75 @@
+﻿@model Employee.Model.AdditionalInfo
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" p-3 my-3 border>
+    <h1>@ViewBag.PageName</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <hr />
+            <form asp-action="AddOrEditInfo" asp-route-aiId="@Model?.AI_Id">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (ViewBag.IsEdit)
+                {
+                    <input type="hidden" asp-for="AI_Id" />
+                }
+                <input type="hidden" asp-for="Employee_Id" />
+                <div class="form-group">
+                    <label asp-for="Mobile" class="control-label">Mobile No.</label>
+                    <input asp-for="Mobile" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Birth_Date" class="control-label">Birth Date</label>
+                    <input asp-for="Birth_Date" type="date" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label">Gender</label>
+                    <div class="col-md-10">
+                        Male
+                        <input asp-for="Gender" id="Gender" name="Gender" value="Male" type="radio">
+                        Female
+                        <input asp-for="Gender" id="Gender" name="Gender" value="Female" type="radio">
+                    </div>
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Marital_Status" class="control-label">Marital Status</label>
+                    <div class="col-md-10">
+                        Married
+                        <input asp-for="Marital_Status" name="Marital_Status" value="Married" type="radio">
+                        Unmarried
+                        <input asp-for="Marital_Status" name="Marital_Status" value="Unmarried" type="radio">
+                    </div>
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Qualification" class="control-label">Qualification</label>
+                    <input asp-for="Qualification" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Experience" class="control-label">Experience</label>
+                    <input asp-for="Experience" class="form-control" />
+                    <br />
+                </div>
+
+                <div></div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Save" />
+                    <a class="btn btn-primary" onclick="history.go(-1)">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

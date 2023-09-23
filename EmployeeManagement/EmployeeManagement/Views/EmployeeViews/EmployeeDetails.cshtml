@@ -1,0 +1,118 @@
+﻿@model Employee.Model.AdditionalInfoData
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3 my-3 border">
+
+    <h1>Employee Details</h1>
+
+    @*@if (ViewBag.IsInfo)
+    {
+        <p style="text-align:right;margin-right:20px;">
+            <a class="btn btn-primary" asp-action="AddOrEdit">Add Info</a>
+        </p>
+    }*@
+
+    <hr />
+    <dl class="row">
+        <div class="col-md-6">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Emp_Name)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Emp_Name)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Designation)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Designation)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Address)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Address)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Salary)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Salary)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Joining_Date)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Joining_Date)
+            </dd>
+        </div>
+
+        <div class="col-md-6">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Mobile)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Mobile)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Email)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Email)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Birth_Date)
+            </dt>
+            <dd class="col-sm-9">
+                @*@Html.DisplayFor(model=>model.Birth_Date)*@
+                @Convert.ToDateTime(@Model.Birth_Date).ToString("dd/MM/yyyy")
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Gender)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Gender)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Marital_Status)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Marital_Status)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Qualification)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Qualification)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model=>model.Experience)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model=>model.Experience)
+            </dd>
+
+        </div>
+    </dl>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary" asp-action="Index">Back</a>
+        </div>
+        <div class="col-md-6">
+            @if(ViewBag.IsInfo)
+            {
+                <a class="btn btn-primary" asp-action="AddOrEditInfo" asp-route-employeeId="@Model.Employee_Id" asp-route-aiId="@Model.AI_Id">Add Info</a>
+                <label class="control-label">Additional information is missing. Click to add info.</label>
+            }
+            else
+            {
+                <a class="btn btn-primary" asp-action="AddOrEditInfo" asp-route-employeeId="@Model.Employee_Id" asp-route-aiId="@Model.AI_Id">Edit Info</a>
+            }
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,63 @@
+﻿@model Employee.Model.EmployeeMater
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" p-3 my-3 border>
+    <h1>@ViewBag.PageName</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <hr/>
+            <form asp-action="AddOrEdit" asp-route-employeeId="@Model?.Employee_Id">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (ViewBag.IsEdit)
+                {
+                    <input type="hidden" asp-for="Employee_Id"/>
+                }
+                <div class="form-group">
+                    <label asp-for="Emp_Name" class="control-label">Employee Name</label>
+                    <input asp-for="Emp_Name" class="form-control"/>
+                    <br/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Designation" class="control-label">Designation</label>
+                    <input asp-for="Designation" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label">Address</label>
+                    <input asp-for="Address" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary" class="control-label">Salary</label>
+                    <input asp-for="Salary" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Joining_Date" class="control-label">Joining Date</label>
+                    <input asp-for="Joining_Date" type="date" class="form-control" />
+                    <br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Department_Id" class="control-label">Department</label>
+                    <select asp-for="Department_Id" class="form-control" asp-items="@(new SelectList(ViewBag.DeptList,"Department_Id","Department_Name"))">
+                        <option value="0">Select Department</option>
+                    </select>
+                   @* <div class ="form-control">
+                    @Html.DropDownListFor(m=>m.Department_List,new SelectList(ViewBag.DeptList,"Department_Id","Department_Name"),"Select Department")
+                    </div>*@
+                    <br />
+                </div>
+                <div></div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Save" />
+                    <a class="btn btn-primary" onclick="history.go(-1)">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

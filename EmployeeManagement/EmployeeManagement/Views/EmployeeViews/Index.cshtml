@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Employee.Model.EmployeeData>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Employee List</h1>
+
+<p style="text-align:right;margin-right:20px;">
+    <a class="btn btn-primary" asp-action="AddOrEdit">Create New</a>
+</p>
+
+<div class="table-responsive">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Emp_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Designation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Joining_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Department_Name)
+                </th>
+                <th></th>
+                <th>Edit</th>
+                <th>Details</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model=>item.Emp_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model=>item.Designation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model=>item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model=>item.Salary)
+                    </td>
+                    <td>
+                       @* @Html.DisplayFor(model=>item.Joining_Date)*@
+                        @Convert.ToDateTime(item.Joining_Date).ToString("dd/MM/yyyy")
+                        @*@String.Format("{0:MM/dd/yyyy}", item.Joining_Date)*@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model=>item.Department_Name)
+                    </td>
+                    <td>
+                    <td class="text-center">
+                        <a asp-action="AddOrEdit" class="btn btn-primary" asp-route-employeeId="@item.Employee_Id">Edit</a>
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="EmployeeDetails" class="btn btn-info" asp-route-employeeId="@item.Employee_Id">Details</a>
+                    </td>
+                    <td class="text-center">
+                        <form asp-action="Delete" asp-route-employeeId="@item.Employee_Id">
+                            <input type="hidden" asp-for="@item.Employee_Id" />
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
+                        @*<a asp-action="Delete" class="btn btn-danger" asp-route-employeeId="@item.Employee_Id">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    
+
+</div>
+
+<P style="text-align:right;margin-right:20px;">
+    
+        <a asp-action="DcrValue" class="btn btn-primary"><</a>
+    <a asp-action="IncrValue" class="btn btn-primary">></a>
+    
+</P>

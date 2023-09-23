@@ -1,0 +1,49 @@
+﻿@model Employee.Model.EmployeeMater
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3 my-3 border">
+
+    <h1>Employee Details</h1>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model=>model.Emp_Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model=>model.Emp_Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model=>model.Designation)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model=>model.Designation)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model=>model.Address)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model=>model.Address)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model=>model.Salary)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model=>model.Salary)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model=>model.Joining_Date)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model=>model.Joining_Date)
+        </dd>
+    </dl>
+    <div>
+        <a class="btn btn-primary" asp-action="AddOrEdit" asp-route-employeeId="@Model.Employee_Id">Edit</a>
+        <a class="btn btn-primary" onclick="history.go(-1)">Back</a>
+    </div>
+
+</div>
